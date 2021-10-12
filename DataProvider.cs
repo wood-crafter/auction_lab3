@@ -15,6 +15,21 @@ namespace Lab3
     /// </summary>
     public class DataProvider
     {
+       
+       /* public static SqlConnection GetConnection()
+        {
+            string ConnectionString = ConfigurationManager.ConnectionStrings["DBConnect"].ToString();
+            return new SqlConnection(ConnectionString);
+        }
+        public static int ExecuteSQL(string sql, params SqlParameter[] parameters)
+    {
+        SqlCommand command = new SqlCommand(sql, GetConnection());
+        command.Parameters.AddRange(parameters);
+        command.Connection.Open();
+        int count = command.ExecuteNonQuery();
+        command.Connection.Close();
+        return count;
+    }*/
         //Khai bao cac thanh phan ket noi va xu ly DB
         SqlConnection cnn; //Ket noi DB
         SqlDataAdapter da; //Xu ly cac cau lenh SQL: Select
@@ -79,4 +94,79 @@ namespace Lab3
             return true;
         }
     }
+    class DAO
+    {
+        static string strConnection = ConfigurationManager.ConnectionStrings["DBConnect"]
+                    .ConnectionString;
+        public static DataTable GetDataTable(string sql)
+        {
+            try
+            {
+
+                SqlConnection conn = new SqlConnection(strConnection);
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public static DataTable GetDataTable(SqlCommand cmd)
+        {
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["DBConnect"]
+                    .ConnectionString;
+                SqlConnection conn = new SqlConnection(strConnection);
+
+                cmd.Connection = conn;
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public static void UpdateTable(SqlCommand cmd)
+        {
+            try
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["DBConnect"]
+                    .ConnectionString;
+                SqlConnection conn = new SqlConnection(strConnection);
+
+                cmd.Connection = conn;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+    }
+   
+
 }
+
