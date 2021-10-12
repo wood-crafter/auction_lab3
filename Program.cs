@@ -15,7 +15,7 @@ namespace Lab3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Display());
+            Application.Run(new Bid());
         }
     }
 }

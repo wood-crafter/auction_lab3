@@ -17,6 +17,7 @@ namespace Lab3
         public Place()
         {
             InitializeComponent();
+            btnPlaceForm.Enabled = false;
             DataTable dt = DAO.GetDataTable("SELECT * FROM Members");
             DataRow row = dt.NewRow();
             dt.Rows.InsertAt(row, 0);
@@ -95,6 +96,23 @@ namespace Lab3
 
         private void btnCancer_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void btnBidForm_Click(object sender, EventArgs e)
+        {
+            Bid bid = new Bid();
+            this.Hide();
+            bid.ShowDialog();
+            this.Close();
+
+        }
+
+        private void btnDisplayForm_Click(object sender, EventArgs e)
+        {
+            Display display = new Display();
+            this.Hide();
+            display.ShowDialog();
             this.Close();
         }
     }

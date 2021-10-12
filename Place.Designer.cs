@@ -32,9 +32,9 @@ namespace Lab3
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnBidForm = new System.Windows.Forms.Button();
+            this.btnPlaceForm = new System.Windows.Forms.Button();
+            this.btnDisplayForm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,48 +62,50 @@ namespace Lab3
             this.itemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // bidToolStripMenuItem
             // 
             this.bidToolStripMenuItem.Name = "bidToolStripMenuItem";
-            this.bidToolStripMenuItem.Size = new System.Drawing.Size(45, 26);
+            this.bidToolStripMenuItem.Size = new System.Drawing.Size(45, 24);
             this.bidToolStripMenuItem.Text = "Bid";
             // 
             // itemToolStripMenuItem
             // 
             this.itemToolStripMenuItem.Name = "itemToolStripMenuItem";
-            this.itemToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
+            this.itemToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.itemToolStripMenuItem.Text = "Item";
             // 
-            // button1
+            // btnBidForm
             // 
-            this.button1.Location = new System.Drawing.Point(12, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Bid";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBidForm.Location = new System.Drawing.Point(12, 46);
+            this.btnBidForm.Name = "btnBidForm";
+            this.btnBidForm.Size = new System.Drawing.Size(75, 23);
+            this.btnBidForm.TabIndex = 4;
+            this.btnBidForm.Text = "Bid";
+            this.btnBidForm.UseVisualStyleBackColor = true;
+            this.btnBidForm.Click += new System.EventHandler(this.btnBidForm_Click);
             // 
-            // button2
+            // btnPlaceForm
             // 
-            this.button2.Location = new System.Drawing.Point(93, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Place";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPlaceForm.Location = new System.Drawing.Point(93, 46);
+            this.btnPlaceForm.Name = "btnPlaceForm";
+            this.btnPlaceForm.Size = new System.Drawing.Size(75, 23);
+            this.btnPlaceForm.TabIndex = 5;
+            this.btnPlaceForm.Text = "Place";
+            this.btnPlaceForm.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDisplayForm
             // 
-            this.button3.Location = new System.Drawing.Point(174, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Display";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDisplayForm.Location = new System.Drawing.Point(174, 46);
+            this.btnDisplayForm.Name = "btnDisplayForm";
+            this.btnDisplayForm.Size = new System.Drawing.Size(75, 23);
+            this.btnDisplayForm.TabIndex = 6;
+            this.btnDisplayForm.Text = "Display";
+            this.btnDisplayForm.UseVisualStyleBackColor = true;
+            this.btnDisplayForm.Click += new System.EventHandler(this.btnDisplayForm_Click);
             // 
             // label1
             // 
@@ -260,9 +262,9 @@ namespace Lab3
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDisplayForm);
+            this.Controls.Add(this.btnPlaceForm);
+            this.Controls.Add(this.btnBidForm);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Place";
@@ -279,9 +281,9 @@ namespace Lab3
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem bidToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBidForm;
+        private System.Windows.Forms.Button btnPlaceForm;
+        private System.Windows.Forms.Button btnDisplayForm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

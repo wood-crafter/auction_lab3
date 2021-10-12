@@ -20,6 +20,7 @@ namespace Lab3
             cbxMember.DataSource = dt;
             cbxMember.DisplayMember = "Name";
             cbxMember.ValueMember = "MemberID";
+            btnDisplayForm.Enabled = false;
         }
         private void bindGrid1(string id)
         {
@@ -73,6 +74,22 @@ namespace Lab3
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             lblNo.Text = dataGridView1.Rows.Count.ToString();
+        }
+
+        private void btnBidForm_Click(object sender, EventArgs e)
+        {
+            Bid bid = new Bid();
+            this.Hide();
+            bid.ShowDialog();
+            this.Close();
+        }
+
+        private void btnPlaceForm_Click(object sender, EventArgs e)
+        {
+            Place place = new Place();
+            this.Hide();
+            place.ShowDialog();
+            this.Close();
         }
     }
 }
