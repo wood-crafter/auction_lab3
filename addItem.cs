@@ -43,29 +43,6 @@ namespace Lab3
         public DateTime EndDateTime { get => endDateTime; set => endDateTime = value; }
         public float CurrentPrice { get => currentPrice; set => currentPrice = value; }
 
-     /*   public static int AddPlace(ArrayList arrayList)
-        {
-            string sql = "INSERT INTO [dbo].[Items]([ItemTypeID],[ItemName],[ItemDescription],[SellerID],[MinimumBidIncrement],[EndDateTime]),[CurrentPrice] " +
-                "VALUES (@itemtypeid,@itemname,@itemDescription,@sellerid,@minimum,@enddatetime,@currentprice)";
-            SqlParameter[] sqlParameter = new SqlParameter[]
-            {
-                new SqlParameter("@itemtypeid",SqlDbType.Int),               
-                 new SqlParameter("@itemname",SqlDbType.NVarChar),
-                 new SqlParameter("@itemDescription",SqlDbType.NVarChar),
-                  new SqlParameter("@sellerid",SqlDbType.Int),
-                   new SqlParameter("@minimum",SqlDbType.Float),
-                    new SqlParameter("@enddatetime",SqlDbType.DateTime),
-                    new SqlParameter("@currentprice",SqlDbType.Float)
-
-
-
-
-            };
-            for (int i = 0; i < arrayList.Count; i++)
-            {
-                sqlParameter[i].Value = arrayList[i];
-            }
-            return DataProvider.ExecuteSQL(sql, sqlParameter);
-        }*/
+     
     }
 }

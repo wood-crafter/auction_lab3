@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Lab3
@@ -28,77 +29,66 @@ namespace Lab3
             cbItemType.DisplayMember = "ItemName";
             cbItemType.ValueMember = "ItemTypeID";
             cbItemType.SelectedValue = 1;
+         
 
             dtPDateTime.Format = DateTimePickerFormat.Custom;
             dtPDateTime.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
 
-        bool check()
+        bool check(string tbItemName,string tbCurrentPrice,string tbItemDes,string txtMinumum)
         {
-            if (tbItemName.Text.Length == 0 || tbCurrentPrice.Text.Length == 0 || tbItemDes.Text.Length == 0 || txtMinumum.Text.Length == 0)
+            if (tbItemName == ""|| tbCurrentPrice == "" || tbItemDes == "" || txtMinumum == "")
             {
                 MessageBox.Show("Please fill all ");
+                return false;
+            }
+           
+            Regex regex = new Regex(@"^[0-9]+\.?[0-9]*$");
+
+            if (!regex.IsMatch(tbCurrentPrice))
+            {
+                MessageBox.Show("Current price must be a double !");
+                return false;
+            }
+            if (!regex.IsMatch(txtMinumum))
+            {
+                MessageBox.Show("Mininum bid increment must be a double !");
                 return false;
             }
             return true;
         }
         private void btnPlace_Click(object sender, EventArgs e)
         {
-            /*int itemtype = Convert.ToInt32(cbItemType.SelectedValue.ToString());
+            int itemtype = Convert.ToInt32(cbItemType.SelectedValue.ToString());
             string itemname = tbItemName.Text.Trim();
             string itemdes = tbItemDes.Text.Trim();
-            int sellerid = Convert.ToInt32(cbSeller.SelectedValue.ToString());
-            float minimumbid = (float)Convert.ToDouble(txtMinumum.Text.Trim());
+            string sellerid =cbSeller.SelectedValue.ToString();
+            string minimumbid = txtMinumum.Text.Trim();
             DateTime date = dtPDateTime.Value;
-            float currentprice = (float)Convert.ToDouble(tbCurrentPrice.Text.Trim());
-            ArrayList arrayList = new ArrayList() { itemtype, itemname, itemdes, sellerid, minimumbid, date, currentprice };
-            if (!check())
-            {
-                return;
-            }
-            else if (addItem.AddPlace(arrayList) > 0)
-            {
-                MessageBox.Show("Add subject successed");
-
-            }
-            else
-            {
-                MessageBox.Show("Add subject failed");
-            }*/
-
+            string currentprice = tbCurrentPrice.Text.Trim();
             try
             {
-                if (!check())
-                {
-                    Console.WriteLine(txtMinumum);
+               if (check(itemname,currentprice,itemdes,minimumbid))
+               {
+                    int seller = Convert .ToInt32(sellerid);
+                    float minimum = (float)Convert.ToDouble(minimumbid);
+                    float current = (float)Convert.ToDouble(currentprice);
                     DataProvider dataProvider = new DataProvider();
-                    string sql = "INSERT INTO [dbo].[Items] ([ItemTypeID],[ItemName],[ItemDescription],[SellerID],[MinimumBidIncrement],[EndDateTime]),[CurrentPrice] " +
-                    "VALUES "
-                    + "(" + cbItemType.SelectedValue.ToString() + ","
-                    + tbItemName.Text + ","
-                    + tbItemDes.Text + ","
-                    + cbSeller.SelectedValue.ToString() + ","
-                    + txtMinumum.Text.ToString() + ","
-                    + dtPDateTime.Value + ","
-                    + tbCurrentPrice.Text.ToString() + ")";
-                    
-                    try
-                    {      
-                        
-                        dataProvider.executeNonQuery(sql);                      
-                        MessageBox.Show("Added");
-
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    string sql = "INSERT INTO dbo.Items(ItemTypeID,ItemName,ItemDescription,SellerID,MinimumBidIncrement,EndDateTime,CurrentPrice )VALUES ( " + itemtype + ", '" + itemname + "', '"  + itemdes + "', " + seller + ", " + minimum + ", '" + date + "', " + current + ")" ;
+                     dataProvider.executeNonQuery(sql);
+                    cbItemType.SelectedValue = 1;
+                    cbSeller.SelectedValue = 1;
+                    txtMinumum.Clear();
+                    tbCurrentPrice.Clear();
+                    tbItemDes.Clear();
+                    tbItemName.Clear();                   
+                    MessageBox.Show("Add item successed");
                 }
-            }
-            catch
-            {     
-                
-                MessageBox.Show("alo");
+
+    }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Add item failed");
             }
         }
       
