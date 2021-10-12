@@ -19,8 +19,6 @@ namespace Lab3
             InitializeComponent();
             btnPlaceForm.Enabled = false;
             DataTable dt = DAO.GetDataTable("SELECT * FROM Members");
-            DataRow row = dt.NewRow();
-            dt.Rows.InsertAt(row, 0);
             cbSeller.DataSource = dt;
             cbSeller.DisplayMember = "Name";
             cbSeller.ValueMember = "MemberID";
