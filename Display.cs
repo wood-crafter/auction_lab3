@@ -11,6 +11,7 @@ namespace Lab3
 {
     public partial class Display : Form
     {
+
         public Display()
         {
             InitializeComponent();
@@ -19,33 +20,18 @@ namespace Lab3
             cbxMember.DataSource = dt;
             cbxMember.DisplayMember = "Name";
             cbxMember.ValueMember = "MemberID";
-            bindGrid1();
         }
-        private void bindGrid1()
+        private void bindGrid1(string id)
         {
-
-            DataProvider dataProvider = new DataProvider();
-            DataTable dt = dataProvider.executeQuery("SELECT * FROM bids");
-            DataView dv = new DataView(dt);
             try
             {
-                /*string filter = "";
-                if (((int)comboBox1.SelectedValue) != -1)
-                    filter = "itemID = " + comboBox1.SelectedValue.ToString();
-                if (filter != "") filter += " AND bidderID IN (";
-                else filter += "bidderID IN (";
-                for (int i = 0; i < listBox1.SelectedItems.Count; i++)
-                {
-                    DataRowView rv = (DataRowView)listBox1.SelectedItems[i];
-                    filter += rv["memberID"].ToString();
-                    if (i < listBox1.SelectedItems.Count - 1)
-                        filter += ",";
-                }
-                filter += ")";
-                //MessageBox.Show(filter);                
-                dv.RowFilter = filter;
-                dv.Sort = "BidPrice DESC";*/
-                dataGridView1.DataSource = dv;
+                string dateNow = DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss");
+                DataProvider dataProvider = new DataProvider();
+                DataTable dt = dataProvider.executeQuery("select A.BidDateTime, A.BidPrice, A.Bidder,(I.EndDateTime - '"+dateNow+"') as TimeRemaining from " +
+                    "(SElECT BidDateTime, BidPrice,Name as Bidder,B.ItemID from Bids B join Members M on B.BidderID = M.MemberId)" +
+                    " as A join Items I on A.ItemID = I.ItemID where A.ItemID = "+id+" order by A.BidPrice desc");
+                dataGridView1.DataSource = dt;
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "dd, HH:mm";
             }
             catch
             {
@@ -56,6 +42,8 @@ namespace Lab3
         {
             try
             {
+                cbxItem.DataSource=null;
+                cbxItem.Items.Clear();
                 string id = cbxMember.SelectedValue.ToString();
                 DataProvider dataProvider = new DataProvider();
                 DataTable dt = dataProvider.executeQuery("SELECT * FROM Items where SellerID = " + id);
@@ -71,7 +59,15 @@ namespace Lab3
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-           
+            string id = cbxItem.SelectedValue.ToString();
+            try
+            {
+                bindGrid1(id);
+            }
+            catch
+            {
+
+            }
         }
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
