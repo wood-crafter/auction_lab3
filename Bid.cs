@@ -46,7 +46,8 @@ namespace Lab3
         private void LoadItem()
         {
             DataProvider dataProvider = new DataProvider();
-            DataTable dt = dataProvider.executeQuery("SELECT ItemID,ItemName FROM Items");
+            string sql = "SELECT ItemID,ItemName FROM Items WHERE Items.EndDateTime > GETDATE()";
+            DataTable dt = dataProvider.executeQuery(sql);
             cbxItem.DataSource = dt;
             cbxItem.DisplayMember = "ItemName";
             cbxItem.ValueMember = "ItemID";
