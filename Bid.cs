@@ -113,6 +113,16 @@ namespace Lab3
                         dataProvider.executeNonQuery(updateCurrentPriceSql);
                         MessageBox.Show("Bid item is added!");
                         //MessageBox.Show(sql);
+
+                        string item = cbxItem.SelectedValue.ToString();
+                        string getNew = "Select * from Items join Members on Items.SellerID=Members.MemberId"
+                                                                  + " Where ItemID = '" + item + "'";
+                        DataTable dt = dataProvider.executeQuery(getNew);
+                        txtItemDescription.Text = dt.Rows[0][3].ToString();
+                        txtCurrentPrice.Text = dt.Rows[0][7].ToString();
+                        txtEdt.Text = dt.Rows[0][6].ToString();
+                        txtSeller.Text = dt.Rows[0][9].ToString();
+                        txtMbi.Text = dt.Rows[0][5].ToString();
                     }
                     catch (SqlException ex)
                     {
