@@ -128,7 +128,7 @@ namespace Lab3
             }
             catch (FormatException)
             {
-                MessageBox.Show("Loi");
+                MessageBox.Show("Price must be a double");
             }
         }
 
