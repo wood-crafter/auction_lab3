@@ -104,9 +104,12 @@ namespace Lab3
                 + cbxBidder.SelectedValue.ToString() + ","
                 + "'" + labelTime.Text + "',"
                 + Convert.ToDouble(txtBidPirce.Text) + ")";
+
+                    string updateCurrentPriceSql = "UPDATE Items SET CurrentPrice = " + Convert.ToDouble(txtBidPirce.Text) +  "WHERE ItemID = " + cbxItem.SelectedValue.ToString();
                     try
                     {
                         dataProvider.executeNonQuery(sql);
+                        dataProvider.executeNonQuery(updateCurrentPriceSql);
                         MessageBox.Show("Bid item is added!");
                         //MessageBox.Show(sql);
                     }
@@ -118,7 +121,8 @@ namespace Lab3
                 }
                 else
                 {
-                    MessageBox.Show("Bid price must be >=" + Convert.ToDouble(txtCurrentPrice.Text) + Convert.ToDouble(txtMbi.Text));
+                    double minBidPrice = Convert.ToDouble(txtCurrentPrice.Text) + Convert.ToDouble(txtMbi.Text);
+                    MessageBox.Show("Bid price must be >=" + Convert.ToDouble(minBidPrice));
                 }
             }
             catch (FormatException)
