@@ -43,6 +43,7 @@ namespace Lab3
             this.lblNo = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -189,11 +190,21 @@ namespace Lab3
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 506);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(476, 17);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Group 5: Phan Van Hung - Bui Tien Anh - Bui Dinh Hai - Nguyen Hai Long";
+            // 
             // Display
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 532);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblNo);
@@ -234,5 +245,6 @@ namespace Lab3
         private System.Windows.Forms.Label lblNo;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label11;
     }
 }

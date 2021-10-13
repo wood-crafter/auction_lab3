@@ -59,6 +59,8 @@ namespace Lab3
             this.labelTime = new System.Windows.Forms.Label();
             this.labelTimeRe = new System.Windows.Forms.Label();
             this.btnBid = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +72,7 @@ namespace Lab3
             this.itemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(914, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(914, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -309,11 +311,32 @@ namespace Lab3
             this.btnBid.UseVisualStyleBackColor = true;
             this.btnBid.Click += new System.EventHandler(this.btnBid_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 17);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "label10";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(33, 485);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(476, 17);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Group 5: Phan Van Hung - Bui Tien Anh - Bui Dinh Hai - Nguyen Hai Long";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
             // Bid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 511);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnBid);
             this.Controls.Add(this.labelTimeRe);
             this.Controls.Add(this.labelTime);
@@ -380,6 +403,8 @@ namespace Lab3
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem itemToolStripMenuItem;
         private System.Windows.Forms.Label lblBidder;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }
 

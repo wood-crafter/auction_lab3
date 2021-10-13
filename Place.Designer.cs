@@ -51,6 +51,7 @@ namespace Lab3
             this.dtPDateTime = new System.Windows.Forms.DateTimePicker();
             this.btnPlace = new System.Windows.Forms.Button();
             this.btnCancer = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,11 +242,21 @@ namespace Lab3
             this.btnCancer.UseVisualStyleBackColor = true;
             this.btnCancer.Click += new System.EventHandler(this.btnCancer_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(22, 424);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(476, 17);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Group 5: Phan Van Hung - Bui Tien Anh - Bui Dinh Hai - Nguyen Hai Long";
+            // 
             // Place
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnCancer);
             this.Controls.Add(this.btnPlace);
             this.Controls.Add(this.dtPDateTime);
@@ -300,5 +311,6 @@ namespace Lab3
         private System.Windows.Forms.DateTimePicker dtPDateTime;
         private System.Windows.Forms.Button btnPlace;
         private System.Windows.Forms.Button btnCancer;
+        private System.Windows.Forms.Label label11;
     }
 }
