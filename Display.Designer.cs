@@ -165,7 +165,6 @@ namespace Lab3
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(569, 255);
             this.dataGridView1.TabIndex = 14;
-            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
             // btnSearch
             // 

@@ -60,6 +60,12 @@ namespace Lab3
             }
             return dt;
         }
+        public  SqlDataReader executeQuery1(string strSelect)
+        {
+            SqlCommand command = new SqlCommand(strSelect, cnn);
+            SqlDataReader rd = command.ExecuteReader();
+            return rd;
+        }
 
         //Hàm execute câu lệnh insert,update,delete
         public bool executeNonQuery(string strSQL)

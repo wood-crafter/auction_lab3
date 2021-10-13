@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\Entity\BidSearch.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="Bid.cs">
       <SubType>Form</SubType>
@@ -96,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
-    <Folder Include="DAO\Entity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
