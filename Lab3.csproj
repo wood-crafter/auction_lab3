@@ -44,7 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="DAO\Entity\BidSearch.cs" />
+=======
+    <Compile Include="addItem.cs" />
+>>>>>>> 72177cefbf01ac4ae44d7094f1733b418fc12edd
     <Compile Include="DataProvider.cs" />
     <Compile Include="Bid.cs">
       <SubType>Form</SubType>
